@@ -1,12 +1,16 @@
 import { env } from "$env/dynamic/private";
 import { error } from "@sveltejs/kit";
 
-const API_BASE_URL = env.API_BASE_URL || " http://localhost:3000";
+const API_BASE_URL = env.API_BASE_URL || "http://localhost:3000";
 
 
 export const load = async ({ fetch }) => {
     try {
+        console.log("Fetching users from:", API_BASE_URL);
+
         const res = await fetch(`${API_BASE_URL}/api/users`);
+
+        console.log("Response status:", res.status);
         if(!res.ok){
             throw new Error("Failed to fetch data");
         }
