@@ -1,9 +1,18 @@
 <script>
-    export let users; // contains what you returned from load()
-  </script>
-  
-  {#if data.users}
-    <pre>{JSON.stringify(data.users, null, 2)}</pre>
-  {:else}
-    <p>Error: {data.error}</p>
-  {/if}
+	let { data } = $props();
+	let users = data.users;
+	let error = data.error;
+</script>
+
+{#if error}
+	<p>{error}</p>
+{:else if users.length > 0}
+	<h1>Users</h1>
+	<ul>
+		{#each users as user}
+			<li>{user.name}</li>
+		{/each}
+	</ul>
+{:else}
+	<p>No users found</p>
+{/if}
