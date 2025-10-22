@@ -4,24 +4,25 @@ import { fail } from "@sveltejs/kit";
 const API_BASE_URL = env.API_BASE_URL || " http://localhost:3000";
 
 export const actions = {
-    register = async ({ request }) => {
-        const formData = await request.formData();
+    register: async (event) => {
+        const formData = await event.request.formData();
         const firstName = formData.get("firstName");
         const lastName = formData.get("lastName");
         const email = formData.get("email");
         const password = formData.get("password");
+        const phoneNumber = formData.get("phoneNumber");
         const dob = formData.get("dob");
         const role = formData.get("role");
-        const user = { firstName, lastName, email, password, dob, role };
+        const user = { firstName, lastName, email, password, phoneNumber, dob, role };
 
         try {
-            const res = await fetch(`${API_BASE_URL}/api/auth/register`, {
+            const res = await event.fetch(`${API_BASE_URL}/api/auth/register`, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
+                  "Content-Type": "application/json",
                 },
                 body: JSON.stringify(user),
-            });
+              });
 
             const data = await res.json();
 
@@ -34,7 +35,9 @@ export const actions = {
                     lastName,
                     email,
                     password,
-                    role
+                    phoneNumber,
+                    dob,
+                    role,
                 });
             }
 
@@ -47,6 +50,8 @@ export const actions = {
                 lastName,
                 email,
                 password,
+                phoneNumber,
+                dob,
                 role,
             });
         }
