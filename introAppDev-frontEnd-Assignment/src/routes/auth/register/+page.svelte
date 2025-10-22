@@ -1,6 +1,9 @@
 <script>
   let { form } = $props();
+  import NavBar from "$lib/NavBar.svelte";
 </script>
+
+<NavBar />
 
 <h1>Register</h1>
 

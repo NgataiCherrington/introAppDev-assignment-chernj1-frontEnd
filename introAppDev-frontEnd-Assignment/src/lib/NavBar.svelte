@@ -2,7 +2,7 @@
     <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/auth/register">Sign Up</a></li>
-        <li><a href="/login">Log in</a></li>
+        <li><a href="/auth/login">Log in</a></li>
     </ul>
 </nav>
 

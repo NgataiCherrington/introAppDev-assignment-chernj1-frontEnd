@@ -4,8 +4,8 @@ import { fail, redirect } from "@sveltejs/kit" ;
 const API_BASE_URL = env.API_BASE_URL || "http://localhost:3000";
 
 export const actions = {
-    login: async (event, cookies) => {
-        const formData = await event.formData();
+    login: async (event) => {
+        const formData = await event.request.formData();
         const email = formData.get("email");
         const password = formData.get("password");
         const user = { email, password };
@@ -40,7 +40,7 @@ export const actions = {
             });
         }
 
-        cookies.set("token", data.token, {
+        event.cookies.set("token", data.token, {
             httpOnly: true,
             secure: true,
             sameSite: "strict",
@@ -49,5 +49,5 @@ export const actions = {
         });
 
         redirect(303, "/");
-    }
-}
+    },
+};
