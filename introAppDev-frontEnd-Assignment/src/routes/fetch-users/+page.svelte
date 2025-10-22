@@ -10,7 +10,7 @@
 	<h1>Users</h1>
 	<ul>
 		{#each users as user}
-			<li>{user.name}</li>
+			<li>{user.firstName}</li>
 		{/each}
 	</ul>
 {:else}
