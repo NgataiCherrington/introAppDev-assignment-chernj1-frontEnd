@@ -1,8 +1,6 @@
 <script>
-	import { env } from "$env/dynamic/private";
+	import { env } from "$env/dynamic/public";
 	import { onMount } from "svelte";
-
-	const API_BASE_URL = env.API_BASE_URL || "http://localhost:3000";
 
 	let users = $state([]);
 	let error = $state(null);
