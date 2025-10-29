@@ -5,7 +5,7 @@
 	let users = $state([]);
 	let error = $state(null);
 
-	const PUBLIC_API_BASE_URL = env.PUBLIC_API_BASE_URL || "http://localhost:3000";
+	const PUBLIC_API_BASE_URL = "https://ngatai-introappdev-backend.onrender.com" || "http://localhost:3000";
 
 	onMount(async () => {
 		try { 

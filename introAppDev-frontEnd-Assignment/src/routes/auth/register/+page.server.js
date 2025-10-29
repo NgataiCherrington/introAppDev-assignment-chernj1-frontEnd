@@ -1,7 +1,7 @@
 import { env } from "$env/dynamic/private";
 import { fail } from "@sveltejs/kit";
 
-const API_BASE_URL = env.PUBLIC_API_BASE_URL || " http://localhost:3000";
+const API_BASE_URL = "https://ngatai-introappdev-backend.onrender.com" || " http://localhost:3000";
 
 export const actions = {
     register: async (event) => {
@@ -16,6 +16,7 @@ export const actions = {
         const user = { firstName, lastName, email, password, phoneNumber, dob, role };
 
         try {
+            console.log(`${API_BASE_URL}/api/auth/register`)
             const res = await event.fetch(`${API_BASE_URL}/api/auth/register`, {
                 method: "POST",
                 headers: {
