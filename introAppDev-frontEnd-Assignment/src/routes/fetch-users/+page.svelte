@@ -5,6 +5,8 @@
 	let users = $state([]);
 	let error = $state(null);
 
+	const API_BASE_URL = env.API_BASE_URL || "http://localhost:3000";
+
 	onMount(async () => {
 		try { 
 			const res = await fetch(`${API_BASE_URL}/api/users`);
