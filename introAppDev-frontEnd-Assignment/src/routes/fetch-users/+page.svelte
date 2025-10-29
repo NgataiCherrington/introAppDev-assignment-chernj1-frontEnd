@@ -32,8 +32,6 @@
 			</form>
 		{/each}
 	</ul>
-{:else if message}
-	<p>{message}</p>
 {:else}
 	<p>No users found</p>
 {/if}
