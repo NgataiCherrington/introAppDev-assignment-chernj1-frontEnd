@@ -27,7 +27,7 @@
 		{#each users as user}
 			<li>{user.firstName} {user.lastName}</li>
 			<form method="POST" action="?/delete">
-				<input type="hidden" name="lastName" value={user.id} />
+				<input type="hidden" name="id" value={user.id} />
 				<button type="submit">Delete</button>
 			</form>
 		{/each}
