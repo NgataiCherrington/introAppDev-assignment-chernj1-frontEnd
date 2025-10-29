@@ -19,7 +19,7 @@
 
 {#if error}
 	<p>{error}</p>
-{:else if users.data.length > 0}
+{:else if users.length > 0}
 	<h1>Users</h1>
 	<ul>
 		{#each user as users}
