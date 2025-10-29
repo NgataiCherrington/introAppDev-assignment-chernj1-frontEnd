@@ -29,6 +29,7 @@
 			<form method="POST" action="?/delete">
 				<input type="hidden" name="id" value={user.id} />
 				<button type="submit">Delete</button>
+				console.log("User with {user.id} deleted")
 			</form>
 		{/each}
 	</ul>
