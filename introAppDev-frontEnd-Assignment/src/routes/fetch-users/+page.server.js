@@ -34,7 +34,7 @@ export const actions = {
         const id = formData.get("id");
 
         try {
-            const res = await fetch(`${API_BASE_URL}/api/users`, {
+            const res = await fetch(`${API_BASE_URL}/api/users/${id}`, {
                 method: "DELETE",
             });
 
