@@ -1,6 +1,6 @@
 <script>
 	let { data } = $props();
-	let users = data.users;
+	let users = data.data.users;
 	let error = data.error;
 </script>
 
