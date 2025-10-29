@@ -27,3 +27,22 @@ export const load = async ({ fetch }) => {
         };
     }
 };
+
+export const actions = {
+    delete: async ({ request }) => {
+        const formData = await request.formData();
+        const lastName = formData.get("lastName");
+
+        try {
+            const res = await fetch(`${API_BASE_URL}/api/users`, {
+                method: "DELETE",
+            });
+
+            const data = await res.json();
+
+            return { success: true, message: data.message };
+        } catch(err) {
+            return { success: false, error: err.message };
+        }
+    },
+};
