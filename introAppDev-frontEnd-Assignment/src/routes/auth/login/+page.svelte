@@ -1,9 +1,7 @@
 <script>
 	let { form } = $props();
-    import NavBar from "$lib/NavBar.svelte";
 </script>
 
-<NavBar />
 <h1>Login</h1>
 
 <form method="POST" action="?/login">
