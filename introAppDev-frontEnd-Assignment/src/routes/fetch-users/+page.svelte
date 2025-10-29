@@ -1,7 +1,20 @@
 <script>
-	let { data } = $props();
-	let users = data.data.users;
-	let error = data.error;
+	import { env } from "$env/dynamic/private";
+	import { onMount } from "svelte";
+
+	const API_BASE_URL = env.API_BASE_URL || "http://localhost:3000";
+
+	let users = $state([]);
+	let error = $state(null);
+
+	onMount(async () => {
+		try { 
+			const res = await fetch(`${API_BASE_URL}/api/users`);
+			users = await res.json();
+		} catch(err) {
+			error = err.message;
+		}
+	});
 </script>
 
 {#if error}
@@ -9,8 +22,8 @@
 {:else if users.length > 0}
 	<h1>Users</h1>
 	<ul>
-		{#each users as user}
-			<li>{user.firstName}</li>
+		{#each user as users}
+			<li>{user.name}</li>
 		{/each}
 	</ul>
 {:else}
