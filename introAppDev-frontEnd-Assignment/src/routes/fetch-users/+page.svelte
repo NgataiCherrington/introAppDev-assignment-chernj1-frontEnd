@@ -10,7 +10,9 @@
 	onMount(async () => {
 		try { 
 			const res = await fetch(`${PUBLIC_API_BASE_URL}/api/users`);
-			users = await res.json();
+			const json = await res.json();
+
+			users = json.data.data // Access the nested data.data array
 		} catch(err) {
 			error = err.message;
 		}
@@ -19,12 +21,11 @@
 
 {#if error}
 	<p>{error}</p>
-{:else if users.data.data.length > 0}
+{:else if users.length > 0}
 	<h1>Users</h1>
 	<ul>
 		{#each users as user}
-			<li>{user.data.data.firstName}</li>
-			<li>{user.data.data.lastName}</li>
+			<li>{user.firstName} {user.lastName}</li>
 		{/each}
 	</ul>
 {:else}
