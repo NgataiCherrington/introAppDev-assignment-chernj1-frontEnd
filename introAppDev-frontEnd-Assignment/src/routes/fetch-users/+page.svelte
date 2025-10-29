@@ -19,11 +19,12 @@
 
 {#if error}
 	<p>{error}</p>
-{:else if users.length > 0}
+{:else if users.data.length > 0}
 	<h1>Users</h1>
 	<ul>
 		{#each user as users}
-			<li>{user.name}</li>
+			<li>{user.data.firstName}</li>
+			<li>{user.data.lastName}</li>
 		{/each}
 	</ul>
 {:else}
