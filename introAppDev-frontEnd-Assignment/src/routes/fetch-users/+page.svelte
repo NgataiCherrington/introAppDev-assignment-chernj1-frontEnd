@@ -23,8 +23,8 @@
 	<h1>Users</h1>
 	<ul>
 		{#each users as user}
-			<li>{user.data.firstName}</li>
-			<li>{user.data.lastName}</li>
+			<li>{user.data.data.firstName}</li>
+			<li>{user.data.data.lastName}</li>
 		{/each}
 	</ul>
 {:else}
