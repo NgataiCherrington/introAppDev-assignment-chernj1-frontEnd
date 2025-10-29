@@ -31,7 +31,7 @@ export const load = async ({ fetch }) => {
 export const actions = {
     delete: async ({ request }) => {
         const formData = await request.formData();
-        const lastName = formData.get("lastName");
+        const id = formData.get("id");
 
         try {
             const res = await fetch(`${API_BASE_URL}/api/users`, {
