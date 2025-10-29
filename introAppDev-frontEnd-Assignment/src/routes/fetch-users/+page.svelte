@@ -5,11 +5,11 @@
 	let users = $state([]);
 	let error = $state(null);
 
-	const API_BASE_URL = env.API_BASE_URL || "http://localhost:3000";
+	const PUBLIC_API_BASE_URL = env.PUBLIC_API_BASE_URL || "http://localhost:3000";
 
 	onMount(async () => {
 		try { 
-			const res = await fetch(`${API_BASE_URL}/api/users`);
+			const res = await fetch(`${PUBLIC_API_BASE_URL}/api/users`);
 			users = await res.json();
 		} catch(err) {
 			error = err.message;
