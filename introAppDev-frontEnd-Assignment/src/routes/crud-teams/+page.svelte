@@ -1,4 +1,6 @@
 <script>
+  import { onMount } from "svelte";
+
   let { data, form } = $props();
   let teams = $state([]);
   let message = data.teams.message;
@@ -6,18 +8,20 @@
   let error = data.error;
   let tokenError = form?.error;
 
-  const API_BASE_URL = "https://ngatai-introappdev-backend.onrender.com" || "http://localhost:3000";
+  const API_BASE_URL =
+    "https://ngatai-introappdev-backend.onrender.com" ||
+    "http://localhost:3000";
 
-	onMount(async () => {
-		try { 
-			const res = await fetch(`${API_BASE_URL}/api/teams`);
-			const json = await res.json();
+  onMount(async () => {
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/teams`);
+      const json = await res.json();
 
-			teams = json.data.data // Access the nested data.data array
-		} catch(err) {
-			error = err.message;
-		}
-	});
+      teams = json.data.data; // Access the nested data.data array
+    } catch (err) {
+      error = err.message;
+    }
+  });
 </script>
 
 <form method="POST" action="?/create">
