@@ -1,7 +1,7 @@
 import { env } from "$env/dynamic/private";
 import { error } from "@sveltejs/kit";
 
-const PUBLIC_API_BASE_URL = env.PUBLIC_API_BASE_URL || "http://localhost:3000";
+const PUBLIC_API_BASE_URL = "https://ngatai-introappdev-backend.onrender.com" || "http://localhost:3000";
 
 export const load = async ({ fetch }) => {
   try {
