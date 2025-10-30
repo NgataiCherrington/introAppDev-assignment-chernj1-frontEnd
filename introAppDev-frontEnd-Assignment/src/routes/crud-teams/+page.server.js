@@ -33,7 +33,7 @@ export const actions = {
         const token = cookies.get("token");
 
         const formData = await request.formData();
-        const id = formData.get("id");
+        const userId = formData.get("userId");
         const teamName = formData.get("teamName");
         const team = { teamName };
 
