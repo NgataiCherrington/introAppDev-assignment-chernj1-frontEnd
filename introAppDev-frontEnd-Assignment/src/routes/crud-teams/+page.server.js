@@ -67,4 +67,20 @@ export const actions = {
             });
         }
     },
+    delete: async ({ request, fetch }) => {
+        const formData = await request.formData();
+        const id = formData.get("id");
+    
+        try {
+          const res = await fetch(`${API_BASE_URL}/api/teams/${id}`, {
+            method: "DELETE",
+          });
+    
+          const data = await res.json();
+    
+          return { success: true, message: data.message };
+        } catch (err) {
+          return { success: false, error: err.message };
+        }
+      },
 };
