@@ -8,12 +8,21 @@
 </script>
 
 <form method="POST" action="?/create">
+  <label for="id">User ID</label>
+  <input
+    type="text"
+    id="id"
+    name="id"
+    value={form?.id ?? ""}
+    placeholder="Enter your user ID"
+  />
+
   <label for="teamName">Team name</label>
   <input
     type="text"
     id="teamName"
     name="teamName"
-    value={form?.name ?? ""}
+    value={form?.teamName ?? ""}
     placeholder="Enter team name"
   />
 
