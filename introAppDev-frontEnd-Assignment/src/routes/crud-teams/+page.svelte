@@ -8,12 +8,12 @@
 </script>
 
 <form method="POST" action="?/create">
-  <label for="id">User ID</label>
+  <label for="userId">User ID</label>
   <input
     type="text"
-    id="id"
-    name="id"
-    value={form?.id ?? ""}
+    id="userId"
+    name="userId"
+    value={form?.userId ?? ""}
     placeholder="Enter your user ID"
   />
 
