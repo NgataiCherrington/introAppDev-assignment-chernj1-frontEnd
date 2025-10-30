@@ -4,6 +4,7 @@
         <li><a href="/auth/register">Sign Up</a></li>
         <li><a href="/auth/login">Log in</a></li>
         <li><a href="/user-display">List of Users</a></li>
+        <li><a href="/crud-teams">Teams</a></li>
     </ul>
 </nav>
 
