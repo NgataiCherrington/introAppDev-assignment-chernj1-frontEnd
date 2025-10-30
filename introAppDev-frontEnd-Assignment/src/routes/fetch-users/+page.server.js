@@ -21,7 +21,7 @@ export const load = async ({ fetch }) => {
     };
   } catch (err) {
     return {
-      users: [],
+      users: { data: { data: []} },
       error: err.message,
     };
   }
