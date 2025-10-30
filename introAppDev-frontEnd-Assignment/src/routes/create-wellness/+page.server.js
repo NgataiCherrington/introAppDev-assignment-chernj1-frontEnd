@@ -26,3 +26,45 @@ export const load = async ({ fetch }) => {
     };
   }
 };
+
+export const actions = {
+    create: async ({ request, cookies }) => {
+        const token = cookies.get("token");
+
+        const formData = await request.formData();
+        const teamName = formData.get("teamName");
+        const team = { teamName };
+
+        try {
+            const res = await fetch(`${API_BASE_URL}/api/teams`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(team)
+            });
+
+            const data = await res.json();
+
+            if(!res.ok) {
+                return fail(409, {
+                    error: data.message,
+                    errors: data.errors,
+                    teamName
+                });
+            }
+
+            return {
+                success: true,
+                message: data.message,
+            };
+        } catch(err) {
+            return fail(500, {
+                success: false,
+                error: err.message,
+                teamName,
+            });
+        }
+    },
+};
