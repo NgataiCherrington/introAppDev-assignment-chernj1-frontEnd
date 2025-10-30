@@ -1,7 +1,7 @@
 import { env } from "$env/dynamic/private";
 import { fail, redirect } from "@sveltejs/kit" ;
 
-const API_BASE_URL = env.PUBLIC_API_BASE_URL || "http://localhost:3000";
+const API_BASE_URL = "https://ngatai-introappdev-backend.onrender.com" || "http://localhost:3000";
 
 export const actions = {
     login: async (event) => {
