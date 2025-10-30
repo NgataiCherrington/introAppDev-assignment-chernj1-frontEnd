@@ -1,13 +1,13 @@
 import { env } from "$env/dynamic/private";
 import { error } from "@sveltejs/kit";
 
-const PUBLIC_API_BASE_URL = "https://ngatai-introappdev-backend.onrender.com" || "http://localhost:3000";
+const API_BASE_URL = "https://ngatai-introappdev-backend.onrender.com" || "http://localhost:3000";
 
 export const load = async ({ fetch }) => {
   try {
-    console.log("Fetching users from:", PUBLIC_API_BASE_URL);
+    console.log("Fetching users from:", API_BASE_URL);
 
-    const res = await fetch(`${PUBLIC_API_BASE_URL}/api/users`);
+    const res = await fetch(`${API_BASE_URL}/api/users`);
 
     console.log("Response status:", res.status);
     if (!res.ok) {
@@ -33,7 +33,7 @@ export const actions = {
     const id = formData.get("id");
 
     try {
-      const res = await fetch(`${PUBLIC_API_BASE_URL}/api/users/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/users/${id}`, {
         method: "DELETE",
       });
 
