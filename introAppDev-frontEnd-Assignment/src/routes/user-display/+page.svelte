@@ -2,7 +2,7 @@
 	import { env } from "$env/dynamic/public";
 	import { onMount } from "svelte";
 
-	let { form } = $props();
+	let { data, form } = $props();
 	let users = $state([]);
 	let error = $state(null);
 
