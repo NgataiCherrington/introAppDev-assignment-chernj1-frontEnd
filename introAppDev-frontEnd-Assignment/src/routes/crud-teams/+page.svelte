@@ -1,10 +1,23 @@
 <script>
   let { data, form } = $props();
-  let teams = data.teams.data;
+  let teams = $state([]);
   let message = data.teams.message;
   let errors = form?.errors;
   let error = data.error;
   let tokenError = form?.error;
+
+  const API_BASE_URL = "https://ngatai-introappdev-backend.onrender.com" || "http://localhost:3000";
+
+	onMount(async () => {
+		try { 
+			const res = await fetch(`${API_BASE_URL}/api/teams`);
+			const json = await res.json();
+
+			teams = json.data.data // Access the nested data.data array
+		} catch(err) {
+			error = err.message;
+		}
+	});
 </script>
 
 <form method="POST" action="?/create">
