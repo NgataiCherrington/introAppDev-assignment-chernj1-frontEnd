@@ -2,7 +2,8 @@ import { form } from "$app/server";
 import { env } from "$env/dynamic/private";
 import { error, fail } from "@sveltejs/kit";
 
-const API_BASE_URL = "https://ngatai-introappdev-backend.onrender.com" || "http://localhost:3000";
+const API_BASE_URL =
+  "https://ngatai-introappdev-backend.onrender.com" || "http://localhost:3000";
 
 export const load = async ({ fetch }) => {
   try {
@@ -29,60 +30,60 @@ export const load = async ({ fetch }) => {
 };
 
 export const actions = {
-    create: async ({ request, cookies }) => {
-        const token = cookies.get("token");
+  create: async ({ request, cookies }) => {
+    const token = cookies.get("token");
 
-        const formData = await request.formData();
-        const userId = formData.get("userId");
-        const teamName = formData.get("teamName");
-        const team = { teamName };
+    const formData = await request.formData();
+    const userId = formData.get("userId");
+    const teamName = formData.get("teamName");
+    const team = { teamName, userId };
 
-        try {
-            const res = await fetch(`${API_BASE_URL}/api/teams`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(team)
-            });
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/teams`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(team),
+      });
 
-            const data = await res.json();
+      const data = await res.json();
 
-            if(!res.ok) {
-                return fail(409, {
-                    error: data.message,
-                    errors: data.errors,
-                    teamName
-                });
-            }
+      if (!res.ok) {
+        return fail(409, {
+          error: data.message,
+          errors: data.errors,
+          teamName,
+        });
+      }
 
-            return {
-                success: true,
-                message: data.message,
-            };
-        } catch(err) {
-            return fail(500, {
-                success: false,
-                error: err.message,
-                teamName,
-            });
-        }
-    },
-    delete: async ({ request, fetch }) => {
-        const formData = await request.formData();
-        const id = formData.get("id");
-    
-        try {
-          const res = await fetch(`${API_BASE_URL}/api/teams/${id}`, {
-            method: "DELETE",
-          });
-    
-          const data = await res.json();
-    
-          return { success: true, message: data.message };
-        } catch (err) {
-          return { success: false, error: err.message };
-        }
-      },
+      return {
+        success: true,
+        message: data.message,
+      };
+    } catch (err) {
+      return fail(500, {
+        success: false,
+        error: err.message,
+        teamName,
+      });
+    }
+  },
+  delete: async ({ request, fetch }) => {
+    const formData = await request.formData();
+    const id = formData.get("id");
+
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/teams/${id}`, {
+        method: "DELETE",
+      });
+
+      const data = await res.json();
+
+      return { success: true, message: data.message };
+    } catch (err) {
+      return { success: false, error: err.message };
+    }
+  },
 };
