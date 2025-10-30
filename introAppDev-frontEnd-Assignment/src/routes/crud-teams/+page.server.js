@@ -1,3 +1,4 @@
+import { form } from "$app/server";
 import { env } from "$env/dynamic/private";
 import { error, fail } from "@sveltejs/kit";
 
@@ -32,6 +33,7 @@ export const actions = {
         const token = cookies.get("token");
 
         const formData = await request.formData();
+        const id = formData.get("id");
         const teamName = formData.get("teamName");
         const team = { teamName };
 
