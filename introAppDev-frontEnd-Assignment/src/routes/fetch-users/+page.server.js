@@ -28,7 +28,7 @@ export const load = async ({ fetch }) => {
 };
 
 export const actions = {
-  delete: async ({ request }) => {
+  delete: async ({ request, fetch }) => {
     const formData = await request.formData();
     const id = formData.get("id");
 
