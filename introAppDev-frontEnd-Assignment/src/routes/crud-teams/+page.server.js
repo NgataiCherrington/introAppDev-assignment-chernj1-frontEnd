@@ -1,5 +1,5 @@
 import { env } from "$env/dynamic/private";
-import { error } from "@sveltejs/kit";
+import { error, fail } from "@sveltejs/kit";
 
 const API_BASE_URL = "https://ngatai-introappdev-backend.onrender.com" || "http://localhost:3000";
 
